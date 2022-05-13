@@ -5,12 +5,8 @@ class AppColors{
   static const kWhiteColor = Color(0xFFFFFFFF);
   static const kTextColorDarkGrey = Color(0xFF2A2A2A);
   static const kSecondaryTextColor = Color(0xFFABABAB);
-  static const kLightGreyTileColor = Color(0xFF3774AD);
+  static const kLightGreySlideToolTipColor = Color(0xFF3774AD);
   static const kGreenColor = Color(0xFF3EBA2F);
-
-  static const appPrimaryBlueColor = Color(0xFF2680E6);
-
-
   static const appPrimaryBlueLightColor = Color(0xFFD3E8FF);
 
   static const kTextColorGrey = Color(0xFF545252);
@@ -30,7 +26,7 @@ class AppColors{
   static const kPrimaryLightColor = Color(0xFFF1E6FF);
 
   static const kPurpleColor= Color(0xFF6350FF);
-
+  static const kContainerColor= Color(0xFF6350FF);
   static const List<Color> gradientColorList = [
     kGradientColorLight,
     kGradientColorDark

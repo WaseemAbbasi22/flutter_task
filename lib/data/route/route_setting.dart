@@ -9,6 +9,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoanForm ());
     case PersonalDataForm.routeName:
       return MaterialPageRoute(builder: (context) => const PersonalDataForm ());
+    // case LogInScreen.routeName:
+    //   return MaterialPageRoute(builder: (context) => const LogInScreen());
 
 
     default:

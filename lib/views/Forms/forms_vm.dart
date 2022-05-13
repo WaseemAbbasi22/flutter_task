@@ -2,7 +2,7 @@
 import 'package:rns_flutter_task/data/base/base_vm.dart';
 
 class FormsVm extends BaseVm {
-  int _amount = 0;
+  double _amount = 100;
   double  _loanAmount =0.0;
 
   double get loanAmount => _loanAmount;
@@ -16,9 +16,9 @@ class FormsVm extends BaseVm {
   set time(int value) {
     _time = value;
   }
-  int get amount => _amount;
+  double get amount => _amount;
 
-  set amount(int value) {
+  set amount(double value) {
     _amount = value;
   }
 
