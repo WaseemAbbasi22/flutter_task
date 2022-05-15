@@ -1,12 +1,12 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rns_flutter_task/configurations/size_config.dart';
-
+import 'package:rns_flutter_task/constants/app_colors.dart';
+import 'package:rns_flutter_task/constants/app_strings.dart';
 
 class LogInScreen extends StatefulWidget {
-  static const routeName = 'personalDataForm';
+  static const routeName = 'loginForm';
   const LogInScreen({Key? key}) : super(key: key);
 
   @override
@@ -29,11 +29,18 @@ class _LogInScreenState extends State<LogInScreen> {
               padding: const EdgeInsets.only(left: 100, top: 100),
               child: Row(
                 children: [
-                  SvgPicture.asset("assets/App-icon.svg"),
+                  SvgPicture.asset("assets/images/App-icon.svg"),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.03,
                   ),
-                  SvgPicture.asset("assets/EduGIGS.svg"),
+                  Text(
+                    AppStrings.appTitle,
+                    style: TextStyle(
+                        color: AppColors.kTextColorGrey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: SizeConfig.screenHeight! * 0.025),
+                  ),
+
                 ],
               ),
             ),
@@ -53,7 +60,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       height: SizeConfig.screenHeight! * 0.04,
                     ),
                     const Text(
-                      "Sign in  to EduGIGs",
+                      "Personal Data Form",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -63,16 +70,23 @@ class _LogInScreenState extends State<LogInScreen> {
                       height: SizeConfig.screenHeight! * 0.01,
                     ),
                     customsTextField(
-                        'Email Address',
-                        'Enter your Email Address',
+                        'First Name',
+                        'Enter your First Name',
                         null,
                         Icons.mail,
                         emailNumberController),
                     SizedBox(
                       height: SizeConfig.screenHeight! * 0.01,
                     ),
-                    customsTextField('Password', 'Enter your password', null,
-                        Icons.visibility, emailNumberController),
+                    customsTextField(
+                        'Last Name',
+                        'Enter your Last Name',
+                        null,
+                        Icons.mail,
+                        emailNumberController),
+                    SizedBox(
+                      height: SizeConfig.screenHeight! * 0.01,
+                    ),
                     SizedBox(
                       height: SizeConfig.screenHeight! * 0.03,
                     ),
@@ -147,20 +161,18 @@ class _LogInScreenState extends State<LogInScreen> {
             top: SizeConfig.screenHeight! * 0.02,
             left: SizeConfig.screenHeight! * 0.03,
             right: SizeConfig.screenWidth! * 0.042),
-        child: SingleChildScrollView(
-          child: TextField(
-            controller: _controller,
-            onTap: onTap,
-            decoration: InputDecoration(
-              suffixIcon: Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Icon(
-                    icon,
-                  )),
-              hintText: hintText,
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
+        child: TextField(
+          controller: _controller,
+          onTap: onTap,
+          decoration: InputDecoration(
+            suffixIcon: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(
+                  icon,
+                )),
+            hintText: hintText,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
           ),
         ),

@@ -39,6 +39,7 @@ dependencies:
   flutter_easyloading: ^3.0.3
   connectivity_plus: ^2.2.0
   flutter_svg: ^1.0.3
+  image_picker: ^0.8.4+1
 #  flutter_native_splash: ^2.1.6
 
 

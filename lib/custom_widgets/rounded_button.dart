@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:rns_flutter_task/configurations/size_config.dart';
+import 'package:rns_flutter_task/constants/app_colors.dart';
 
-class RoundedButton extends StatelessWidget {
+class CustomFormButton extends StatelessWidget {
   final String text;
-   var onTap;
+  final double height;
+  final double width;
+  var onTap;
   final Color color, textColor;
-   RoundedButton({
+
+  CustomFormButton({
     required this.text,
     required this.onTap,
     required this.color,
+    required this.height,
+    required this.width,
     required this.textColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      width: size.width * 0.8,
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
+      height: height,
+      width: width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(29),
         child: newElevatedButton(),
@@ -36,9 +44,10 @@ class RoundedButton extends StatelessWidget {
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
           primary: color,
-          padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           textStyle: TextStyle(
-              color: textColor, fontSize: 14, fontWeight: FontWeight.w500)),
+              color: textColor,
+              fontSize: SizeConfig.screenHeight! * 0.02,
+              fontWeight: FontWeight.w500)),
     );
   }
 }

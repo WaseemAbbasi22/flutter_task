@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:rns_flutter_task/views/Forms/login_in_screen.dart';
 import 'package:rns_flutter_task/views/Forms/personal_data_form.dart';
 import 'package:rns_flutter_task/views/Forms/loan_form.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -9,6 +10,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoanForm ());
     case PersonalDataForm.routeName:
       return MaterialPageRoute(builder: (context) => const PersonalDataForm ());
+    case LogInScreen.routeName:
+      return MaterialPageRoute(builder: (context) => const LogInScreen ());
     // case LogInScreen.routeName:
     //   return MaterialPageRoute(builder: (context) => const LogInScreen());
 
