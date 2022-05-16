@@ -59,4 +59,21 @@ class FormValidationVm extends BaseVm{
     }
     notifyListeners();
   }
+  void validateIncome(String? val) {
+    if (val != null && val.isValidIncome) {
+      monthlyIncome = ValidationModel(val, null);
+    } else {
+      monthlyIncome = ValidationModel(null, 'Please Enter a Valid Income');
+    }
+    notifyListeners();
+  }
+  void validateJobTitle(String? val) {
+    if (val != null && val.isValidTitle) {
+      jobTitle = ValidationModel(val, null);
+    } else {
+      jobTitle = ValidationModel(null, 'Please Enter a Valid Income');
+    }
+    notifyListeners();
+  }
+
 }
