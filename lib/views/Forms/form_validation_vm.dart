@@ -9,6 +9,8 @@ class FormValidationVm extends BaseVm{
 
   set firstName(ValidationModel value) {
     _firstName = value;
+    notifyListeners();
+
   }
 
   ValidationModel _lastName = ValidationModel(null, null);
@@ -74,6 +76,12 @@ class FormValidationVm extends BaseVm{
       jobTitle = ValidationModel(null, 'Please Enter a Valid Income');
     }
     notifyListeners();
+  }
+  bool get validate {
+    return firstName.value != null &&
+        lastName.value != null &&
+        monthlyIncome.value != null &&
+        invoicePicture.value != null;
   }
 
 }

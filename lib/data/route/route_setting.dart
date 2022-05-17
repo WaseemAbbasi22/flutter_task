@@ -1,20 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:rns_flutter_task/views/Forms/login_in_screen.dart';
 import 'package:rns_flutter_task/views/Forms/personal_data_form.dart';
 import 'package:rns_flutter_task/views/Forms/loan_form.dart';
+import 'package:rns_flutter_task/views/loan_status_view.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case LoanForm.routeName:
       return MaterialPageRoute(builder: (context) => const LoanForm ());
     case PersonalDataForm.routeName:
       return MaterialPageRoute(builder: (context) => const PersonalDataForm ());
-    case LogInScreen.routeName:
-      return MaterialPageRoute(builder: (context) => const LogInScreen ());
-    // case LogInScreen.routeName:
-    //   return MaterialPageRoute(builder: (context) => const LogInScreen());
-
+    case LoanStatusView.routeName:
+      return MaterialPageRoute(builder: (context) => const LoanStatusView ());
 
     default:
       return errorRoute();

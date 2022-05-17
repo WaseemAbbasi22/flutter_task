@@ -7,10 +7,8 @@ import 'package:rns_flutter_task/constants/app_colors.dart';
 import 'package:rns_flutter_task/constants/app_constants.dart';
 import 'package:rns_flutter_task/constants/app_strings.dart';
 import 'package:rns_flutter_task/custom_widgets/rounded_button.dart';
-import 'package:rns_flutter_task/custom_widgets/rounded_input_field.dart';
 import 'package:rns_flutter_task/utilities/general_utilities.dart';
 import 'package:rns_flutter_task/views/Forms/forms_vm.dart';
-import 'package:rns_flutter_task/views/Forms/login_in_screen.dart';
 import 'package:rns_flutter_task/views/Forms/personal_data_form.dart';
 
 class LoanForm extends StatefulWidget {
@@ -65,9 +63,7 @@ class _LoanFormState extends State<LoanForm> {
               ),
               Container(
                 padding: EdgeInsets.only(left: SizeConfig.screenWidth! * 0.07),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                 height: SizeConfig.screenHeight! * 0.6,
                 width: SizeConfig.screenWidth! * 0.84,
                 child: Column(
@@ -99,8 +95,7 @@ class _LoanFormState extends State<LoanForm> {
                         Expanded(
                           child: Slider(
                               label: '${formVm.amount.round()}',
-                              activeColor:
-                                  AppColors.kLightGreySlideToolTipColor,
+                              activeColor: AppColors.kLightGreySlideToolTipColor,
                               // inactiveColor: Colors.grey,
                               thumbColor: AppColors.kLightGreySlideToolTipColor,
                               divisions: divisions,
@@ -113,19 +108,11 @@ class _LoanFormState extends State<LoanForm> {
                               }),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              right: SizeConfig.screenWidth! * 0.05),
+                          padding: EdgeInsets.only(right: SizeConfig.screenWidth! * 0.05),
                           child: Text(
-                            formVm.amount != null
-                                ? formVm.amount
-                                        .toStringAsFixed(1)
-                                        .split('.')
-                                        .first +
-                                    "€"
-                                : "0",
-                            style: TextStyle(
-                                color: AppColors.kTextColorGrey,
-                                fontSize: SizeConfig.screenHeight! * 0.021),
+                            formVm.amount != null ? formVm.amount.toStringAsFixed(1).split('.').first + "€" : "0",
+                            style:
+                                TextStyle(color: AppColors.kTextColorGrey, fontSize: SizeConfig.screenHeight! * 0.021),
                           ),
                         ),
                       ],
@@ -161,8 +148,7 @@ class _LoanFormState extends State<LoanForm> {
                           height: SizeConfig.screenHeight! * 0.02,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              right: SizeConfig.screenWidth! * 0.04),
+                          padding: EdgeInsets.only(right: SizeConfig.screenWidth! * 0.04),
                           child: CustomFormButton(
                             text: "Calculate",
                             onTap: () {
@@ -171,7 +157,6 @@ class _LoanFormState extends State<LoanForm> {
                               formVm.calculateMonthlyRate();
                               // formVm.loading = false;
                               print('loader value is ${formVm.loading}');
-
                             },
                             color: AppColors.kLightGreySlideToolTipColor,
                             textColor: AppColors.kWhiteColor,
@@ -184,21 +169,26 @@ class _LoanFormState extends State<LoanForm> {
                     SizedBox(
                       height: SizeConfig.screenHeight! * 0.02,
                     ),
-                    formVm.loading==false?Text(
-                      formVm.monthlyRate == 0.0
-                          ? ' - -  - -'
-                          : formVm.monthlyRate.toStringAsFixed(2) + " €",
-                      style: TextStyle(
-                          color: AppColors.kTextColorGrey,
-                          fontSize: SizeConfig.screenHeight! * 0.021),
-                    ):GeneralUtilities.loaderWidget(),
+                    formVm.loading == false
+                        ? Text(
+                            formVm.monthlyRate == 0.0 ? ' - -  - -' : formVm.monthlyRate.toStringAsFixed(2) + " €",
+                            style:
+                                TextStyle(color: AppColors.kTextColorGrey, fontSize: SizeConfig.screenHeight! * 0.021),
+                          )
+                        : GeneralUtilities.loaderWidget(),
                     SizedBox(
                       height: SizeConfig.screenHeight! * 0.1,
                     ),
                     CustomFormButton(
                       text: "Next",
                       onTap: () {
-                        Navigator.pushNamed(context, PersonalDataForm.routeName);
+                        if (formVm.monthlyRate == 0.0) {
+                          GeneralUtilities.showMessage(
+                              context: context, title: "info", text: "Please calculate monthly rate to continue");
+                        }
+                        else{
+                          Navigator.pushNamed(context, PersonalDataForm.routeName);
+                        }
                         // print('amount selected is ${formVm.amount}');
                         // print('time Period  is ${formVm.timePeriod}');
                         // formVm.calculateMonthlyRate();
@@ -223,9 +213,7 @@ class _LoanFormState extends State<LoanForm> {
     return Text(
       label,
       style: TextStyle(
-          color: AppColors.kBlackColor,
-          fontSize: SizeConfig.screenHeight! * 0.023,
-          fontWeight: FontWeight.normal),
+          color: AppColors.kBlackColor, fontSize: SizeConfig.screenHeight! * 0.023, fontWeight: FontWeight.normal),
     );
   }
 

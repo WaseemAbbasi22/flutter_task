@@ -1,31 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:rns_flutter_task/constants/app_colors.dart';
-import 'package:rns_flutter_task/custom_widgets/text_field_container.dart';
+import 'package:flutter/services.dart';
+import 'package:rns_flutter_task/configurations/size_config.dart';
 
-class RoundedInputField extends StatelessWidget {
-  final String hintText;
-  final IconData icon;
-  var onChanged;
-   RoundedInputField({
+class CustomFormField extends StatelessWidget {
+  const CustomFormField({
     Key? key,
     required this.hintText,
-    required this.icon,
+    required this.errorText,
+    required this.controller,
     this.onChanged,
+    this.validator,
+    this.inputFormatters,
   }) : super(key: key);
+  final String hintText;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? errorText;
+  final TextEditingController controller;
+  final Function(String?)? onChanged;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    return TextFieldContainer(
-      child: TextField(
+    return Padding(
+      padding: EdgeInsets.only(top: SizeConfig.screenHeight! * 0.01, right: SizeConfig.screenWidth! * 0.042),
+      child: TextFormField(
         onChanged: onChanged,
-        cursorColor: AppColors.kPrimaryColor,
+        validator: validator,
+        controller: controller,
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            color: AppColors.kPrimaryColor,
-          ),
           hintText: hintText,
-          border: InputBorder.none,
+          errorText: errorText,
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
         ),
       ),
     );

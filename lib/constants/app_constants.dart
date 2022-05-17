@@ -40,4 +40,8 @@ class AppConstants {
     ];
     return menuItems;
   }
+  int max= 10;
+  int min = 0;
+  int count =1;
+  static String apiUrl = "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=10&count=1";
 }
