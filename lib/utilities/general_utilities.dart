@@ -1,7 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:rns_flutter_task/configurations/size_config.dart';
-import 'package:rns_flutter_task/constants/app_colors.dart';
+import 'package:flutter_task/configurations/size_config.dart';
+import 'package:flutter_task/constants/app_colors.dart';
 
 class GeneralUtilities {
   static int stringConversion(String string) {

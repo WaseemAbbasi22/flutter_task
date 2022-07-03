@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_task/views/auth/login_view.dart';
+import 'package:flutter_task/views/auth/login_vm.dart';
 import 'package:provider/provider.dart';
-import 'package:rns_flutter_task/views/Forms/forms_vm.dart';
-import 'package:rns_flutter_task/views/Forms/loan_form.dart';
+import 'package:flutter_task/views/Forms/forms_vm.dart';
+import 'package:flutter_task/views/Forms/loan_form.dart';
 
 import 'data/route/route_setting.dart';
 
@@ -19,10 +21,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => FormsVm()),
+          ChangeNotifierProvider(create: (_) => LoginVm()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: LoanForm.routeName,
+          initialRoute: LogInView.routeName,
           onGenerateRoute: (settings) => generateRoute(settings),
           builder: EasyLoading.init(),
         ));

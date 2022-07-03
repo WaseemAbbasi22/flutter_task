@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rns_flutter_task/data/base/base_vm.dart';
-import 'package:rns_flutter_task/data/extentions.dart';
-import 'package:rns_flutter_task/data/services/web_services.dart';
-import 'package:rns_flutter_task/utilities/general_utilities.dart';
+import 'package:flutter_task/data/base/base_vm.dart';
+import 'package:flutter_task/data/extentions.dart';
+import 'package:flutter_task/data/services/web_services.dart';
+import 'package:flutter_task/utilities/general_utilities.dart';
 
 import '../../data/models/validation_model.dart';
 

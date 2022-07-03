@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rns_flutter_task/configurations/size_config.dart';
-import 'package:rns_flutter_task/constants/app_colors.dart';
+import 'package:flutter_task/configurations/size_config.dart';
+
 
 class CustomFormButton extends StatelessWidget {
   final String text;
@@ -22,7 +22,7 @@ class CustomFormButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(20)),
       height: height,
       width: width,
       child: ClipRRect(

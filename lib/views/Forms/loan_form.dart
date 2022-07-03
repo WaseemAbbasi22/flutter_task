@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:rns_flutter_task/configurations/size_config.dart';
-import 'package:rns_flutter_task/constants/app_colors.dart';
-import 'package:rns_flutter_task/constants/app_constants.dart';
-import 'package:rns_flutter_task/constants/app_strings.dart';
-import 'package:rns_flutter_task/custom_widgets/rounded_button.dart';
-import 'package:rns_flutter_task/utilities/general_utilities.dart';
-import 'package:rns_flutter_task/views/Forms/forms_vm.dart';
-import 'package:rns_flutter_task/views/Forms/personal_data_form.dart';
+import 'package:flutter_task/configurations/size_config.dart';
+import 'package:flutter_task/constants/app_colors.dart';
+import 'package:flutter_task/constants/app_constants.dart';
+import 'package:flutter_task/constants/app_strings.dart';
+import 'package:flutter_task/custom_widgets/rounded_button.dart';
+import 'package:flutter_task/utilities/general_utilities.dart';
+import 'package:flutter_task/views/Forms/forms_vm.dart';
+import 'package:flutter_task/views/Forms/login_view.dart';
 
 class LoanForm extends StatefulWidget {
   // static const routeName = 'premliminaryForm';

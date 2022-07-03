@@ -5,12 +5,13 @@ import 'package:flutter_task/configurations/size_config.dart';
 import 'package:flutter_task/constants/app_colors.dart';
 import 'package:flutter_task/constants/app_strings.dart';
 
-import 'Forms/forms_vm.dart';
+import '../Forms/forms_vm.dart';
 
-class LoanStatusView extends StatelessWidget {
-  static const routeName = 'loanStatus';
 
-  const LoanStatusView({Key? key}) : super(key: key);
+class HomeView extends StatelessWidget {
+  static const routeName = 'homeView';
+
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

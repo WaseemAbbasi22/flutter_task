@@ -1,6 +1,6 @@
-import 'package:rns_flutter_task/data/base/base_vm.dart';
-import 'package:rns_flutter_task/data/extentions.dart';
-import 'package:rns_flutter_task/data/models/validation_model.dart';
+import 'package:flutter_task/data/base/base_vm.dart';
+import 'package:flutter_task/data/extentions.dart';
+import 'package:flutter_task/data/models/validation_model.dart';
 
 class FormValidationVm extends BaseVm{
   ValidationModel _firstName = ValidationModel(null, null);

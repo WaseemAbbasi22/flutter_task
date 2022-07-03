@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:rns_flutter_task/configurations/size_config.dart';
-import 'package:rns_flutter_task/constants/app_colors.dart';
-import 'package:rns_flutter_task/constants/app_strings.dart';
-import 'package:rns_flutter_task/custom_widgets/custom_dialoge.dart';
-import 'package:rns_flutter_task/custom_widgets/rounded_button.dart';
-import 'package:rns_flutter_task/custom_widgets/rounded_input_field.dart';
-import 'package:rns_flutter_task/utilities/connectivity_utilities.dart';
-import 'package:rns_flutter_task/utilities/general_utilities.dart';
-import 'package:rns_flutter_task/views/Forms/forms_vm.dart';
-import 'package:rns_flutter_task/views/loan_status_view.dart';
+import 'package:flutter_task/configurations/size_config.dart';
+import 'package:flutter_task/constants/app_colors.dart';
+import 'package:flutter_task/constants/app_strings.dart';
+import 'package:flutter_task/custom_widgets/custom_dialoge.dart';
+import 'package:flutter_task/custom_widgets/rounded_button.dart';
+import 'package:flutter_task/custom_widgets/rounded_input_field.dart';
+import 'package:flutter_task/utilities/connectivity_utilities.dart';
+import 'package:flutter_task/utilities/general_utilities.dart';
+import 'package:flutter_task/views/Forms/forms_vm.dart';
+import 'package:flutter_task/views/loan_status_view.dart';
 
 class PersonalDataForm extends StatefulWidget {
   static const routeName = 'personalDataForm';
@@ -61,26 +61,26 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: SizeConfig.screenHeight! * 0.12,
-                ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset("assets/images/App-icon.svg"),
-                    SizedBox(
-                      width: SizeConfig.screenWidth! * 0.03,
-                    ),
-                    Text(
-                      AppStrings.appTitle,
-                      style: TextStyle(
-                          color: AppColors.kTextColorGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.screenHeight! * 0.025),
-                    ),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.only(
+              //     left: SizeConfig.screenHeight! * 0.12,
+              //   ),
+              //   child: Row(
+              //     children: [
+              //       SvgPicture.asset("assets/images/App-icon.svg"),
+              //       SizedBox(
+              //         width: SizeConfig.screenWidth! * 0.03,
+              //       ),
+              //       Text(
+              //         AppStrings.appTitle,
+              //         style: TextStyle(
+              //             color: AppColors.kTextColorGrey,
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: SizeConfig.screenHeight! * 0.025),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               SizedBox(
                 height: SizeConfig.screenHeight! * 0.04,
               ),
@@ -112,21 +112,21 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
                           height: SizeConfig.screenHeight! * 0.04,
                         ),
                         customLabel(AppStrings.firstName),
-                        CustomFormField(
-                          hintText: 'First Name',
-                          controller: firstNameController,
-                          errorText: formVm.firstName.error,
-                          // onChanged: (val) {
-                          //   formVm.validateFirstName(val);
-                          // },
-                        ),
+                        // CustomFormField(
+                        //   hintText: 'First Name',
+                        //   controller: firstNameController,
+                        //   errorText: formVm.firstName.error,
+                        //   // onChanged: (val) {
+                        //   //   formVm.validateFirstName(val);
+                        //   // },
+                        // ),
                         customLabel(AppStrings.lastName),
-                        CustomFormField(
-                          hintText: 'Last Name',
-                          // onChanged: formVm.validateLastName,
-                          controller: lastNameController,
-                          errorText: formVm.lastName.error,
-                        ),
+                        // CustomFormField(
+                        //   hintText: 'Last Name',
+                        //   // onChanged: formVm.validateLastName,
+                        //   controller: lastNameController,
+                        //   errorText: formVm.lastName.error,
+                        // ),
                         // formTextField(
                         //     hintText: 'Enter Last Name',
                         //     onChange: (val) {},
@@ -139,23 +139,24 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   customLabel(AppStrings.jobTitle),
-                                  CustomFormField(
-                                    hintText: 'Job Title',
-                                    // onChanged: formVm.validateLastName,
-                                    controller: jobTitleController,
-                                    errorText: formVm.jobTitle.error,
-                                  ),
+                                  // CustomFormField(
+                                  //   hintText: 'Job Title',
+                                  //
+                                  //   // onChanged: formVm.validateLastName,
+                                  //   controller: jobTitleController,
+                                  //   errorText: formVm.jobTitle.error,
+                                  // ),
                                 ],
                               )
                             : SizedBox(
                                 height: SizeConfig.screenHeight! * 0.01,
                               ),
                         customLabel(AppStrings.monthlyIncom),
-                        CustomFormField(
-                          hintText: 'Monthly Income',
-                          controller: monthlyIcomController,
-                          errorText: formVm.monthlyIncome.error,
-                        ),
+                        // CustomFormField(
+                        //   hintText: 'Monthly Income',
+                        //   controller: monthlyIcomController,
+                        //   errorText: formVm.monthlyIncome.error,
+                        // ),
                         customLabel(AppStrings.invoicePicture),
                         SizedBox(
                           height: SizeConfig.screenHeight! * 0.02,

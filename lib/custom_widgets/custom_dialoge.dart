@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rns_flutter_task/configurations/size_config.dart';
-import 'package:rns_flutter_task/constants/app_colors.dart';
-import 'package:rns_flutter_task/views/Forms/forms_vm.dart';
+import 'package:flutter_task/configurations/size_config.dart';
+import 'package:flutter_task/constants/app_colors.dart';
+import 'package:flutter_task/views/Forms/forms_vm.dart';
 
 class CustomDialoge extends StatelessWidget {
   const CustomDialoge({Key? key}) : super(key: key);
