@@ -15,6 +15,7 @@ class CustomFormField extends StatelessWidget {
     this.validator,
     this.inputFormatters,
     this.vm,
+    this.isObscureText,
     required this.isPassword,
   }) : super(key: key);
   final String hintText;
@@ -24,6 +25,7 @@ class CustomFormField extends StatelessWidget {
   final Function(String?)? onChanged;
   final String? Function(String?)? validator;
   final bool isPassword;
+   bool ?isObscureText;
   final LoginVm? vm;
 
   @override

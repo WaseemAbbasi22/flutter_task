@@ -77,7 +77,7 @@ class _LogInViewState extends State<LogInView> {
                     key: _formKey,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.screenWidth! * 0.14),
+                          horizontal: SizeConfig.screenWidth! * 0.08),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,7 +87,7 @@ class _LogInViewState extends State<LogInView> {
                           ),
                           Center(
                             child: SizedBox(
-                              width: SizeConfig.screenWidth! * 0.35,
+                              width: SizeConfig.screenWidth! * 0.45,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,30 +155,32 @@ class _LogInViewState extends State<LogInView> {
                             text: "Login",
                             onTap: () {
                               loginVm.detectBtnClick = true;
-                              loginVm
-                                  .validateUserName(userNameController.text);
-                              loginVm.validatePassword(passwordController.text);
+                              // loginVm
+                              //     .validateUserName(userNameController.text);
+                              // loginVm.validatePassword(passwordController.text);
+                              // loginVm.logIn(context);
+                              loginVm.getPosts(context);
 
-                              if (
-                                  loginVm.userName.value != null &&
-                                  loginVm.userName.value != null) {
-                                EasyLoading.show();
-                                loginVm
-                                    .logIn(context)
-                                    .whenComplete(() {
-                                  clearControllerValue();
-                                  EasyLoading.dismiss();
-                                  loginVm.detectBtnClick = false;
-                                  Navigator.pushReplacementNamed(
-                                      context, HomeView.routeName);
-                                });
-                              } else {
-                                GeneralUtilities.showMessage(
-                                    context: context,
-                                    title: "Error",
-                                    text:
-                                        "Please provide valid credentials.");
-                              }
+                              // if (
+                              //     loginVm.userName.value != null &&
+                              //     loginVm.userName.value != null) {
+                              //   EasyLoading.show();
+                              //   loginVm
+                              //       .logIn(context)
+                              //       .whenComplete(() {
+                              //     clearControllerValue();
+                              //     EasyLoading.dismiss();
+                              //     loginVm.detectBtnClick = false;
+                              //     Navigator.pushReplacementNamed(
+                              //         context, HomeView.routeName);
+                              //   });
+                              // } else {
+                              //   GeneralUtilities.showMessage(
+                              //       context: context,
+                              //       title: "Error",
+                              //       text:
+                              //           "Please provide valid credentials.");
+                              // }
                             },
                             color: AppColors.kGreenColor,
                             textColor: AppColors.kWhiteColor,

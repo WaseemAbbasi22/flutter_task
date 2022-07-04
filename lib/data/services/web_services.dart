@@ -28,6 +28,34 @@ class WebService{
       return 0;
     }
   }
+  static Future<dynamic> post(String url, data) async {
+    //TODO replace with session token
+    try {
+      print('data in post method is $data}');
+      var responce = await Dio().post(
+
+        // baseUrl + 'UserFriend/GetAllByUserId?userId=$id',
+          AppStrings.postBaseUrl + url,
+          options: Options(
+            // headers: {
+            //   'Authorization':
+            //   'Bearer ' +SessionController().token,
+            //   // 'Authorization':
+            //   // 'Bearer $testUserToken'
+            // },
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! <= 500;
+            },
+          ),
+          data: data);
+
+      print(responce.statusCode);
+      return _getResponse(responce);
+    } catch (e) {
+      print(e);
+    }
+  }
   static Future<dynamic> get(
 //
       String url,
@@ -41,18 +69,6 @@ class WebService{
         AppStrings.getBaseUrl + url,
 
         options: Options(
-
-          headers: {
-
-            // 'Authorization':
-
-            //     'Bearer ${SessionController().token}'
-
-            'Authorization':
-
-            AppStrings.deviceToken
-
-          },
 
           followRedirects: false,
 
