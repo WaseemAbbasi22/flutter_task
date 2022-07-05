@@ -27,6 +27,7 @@ class _SplashState extends State<Splash> {
     super.initState();
   }
   @override
+  //
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
