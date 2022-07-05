@@ -41,8 +41,9 @@ dependencies:
   flutter_svg: ^1.0.3
   image_picker: ^0.8.4+1
   another_flushbar: ^1.10.28
-  flutter_native_splash: ^2.1.6
+#  flutter_native_splash: ^2.1.6
   dio: ^4.0.6
+  shared_preferences: ^2.0.15
 
 
 
@@ -58,8 +59,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-flutter_native_splash:
-  image: assets/images/App-icon.svg
+#flutter_native_splash:
+#  image: assets/images/App-icon.svg
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

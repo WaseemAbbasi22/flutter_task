@@ -6,6 +6,7 @@ import 'package:flutter_task/views/Forms/loan_form.dart';
 import 'package:flutter_task/views/auth/login_view.dart';
 import 'package:flutter_task/views/home/home_view.dart';
 import 'package:flutter_task/views/loan_status_view.dart';
+import 'package:flutter_task/views/splash/splash_screen.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case LoanForm.routeName:
@@ -18,6 +19,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const PersonalDataForm ());
     case LoanStatusView.routeName:
       return MaterialPageRoute(builder: (context) => const LoanStatusView ());
+    case Splash.routeName:
+      return MaterialPageRoute(builder: (context) => const Splash ());
 
     default:
       return errorRoute();

@@ -85,7 +85,7 @@ class FormsVm extends BaseVm {
 
   void validateFirstName(String? val) {
     print('value for the view is $val');
-    if (val != null && val.isValidName) {
+    if (val != null && val.isValidUserName) {
       firstName = ValidationModel(val, null);
     } else {
       firstName = ValidationModel(null, 'Please Enter a Valid First Name');
@@ -94,7 +94,7 @@ class FormsVm extends BaseVm {
   }
 
   void validateLastName(String? val) {
-    if (val != null && val.isValidName) {
+    if (val != null && val.isValidUserName) {
       lastName = ValidationModel(val, null);
     } else {
       lastName = ValidationModel(null, 'Please Enter a Valid Last Name');
@@ -109,7 +109,7 @@ class FormsVm extends BaseVm {
     } else {
       monthlyIncome = ValidationModel(null, 'Please Enter a Valid Income (only Numbers)');
       print('I am in else Condition with firstName value ${firstName.error} ');
-      print('reg expression match value is ${val?.isValidName}');
+      print('reg expression match value is ${val?.isValidUserName}');
     }
     notifyListeners();
   }

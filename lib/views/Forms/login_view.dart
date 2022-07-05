@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_task/views/home/home_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_task/configurations/size_config.dart';
 import 'package:flutter_task/constants/app_colors.dart';
@@ -220,7 +221,7 @@ class _PersonalDataFormState extends State<PersonalDataForm> {
                                 formVm.getLoanStatus();
                                 EasyLoading.dismiss();
                                 formVm.detectBtnClick = false;
-                                Navigator.pushReplacementNamed(context, LoanStatusView.routeName);
+                                Navigator.pushReplacementNamed(context, HomeView.routeName);
                               });
                             } else {
                               GeneralUtilities.showMessage(

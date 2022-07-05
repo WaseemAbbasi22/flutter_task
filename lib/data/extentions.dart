@@ -1,7 +1,8 @@
 extension extString on String {
 
-  bool get isValidName{
-    String pattern = r'^[a-zA-Z]+(\s[a-zA-Z]+)?$';
+  bool get isValidUserName{
+    // String pattern = r'^[a-zA-Z]+(\s[a-zA-Z]+)?$';
+    String pattern = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9.]+\.[a-zA-Z]+";
     final nameRegExp = RegExp(pattern);
     return nameRegExp.hasMatch(this);
   }

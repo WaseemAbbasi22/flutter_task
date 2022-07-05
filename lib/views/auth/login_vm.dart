@@ -14,6 +14,14 @@ class LoginVm extends BaseVm {
   bool _loading = false;
   bool _detectBtnClick = false;
   bool _isObscure = false;
+  String _logInStatus = '';
+
+  String get logInStatus => _logInStatus;
+
+  set logInStatus(String value) {
+    _logInStatus = value;
+    notifyListeners();
+  }
 
   bool get isObscure => _isObscure;
   List<Post> _postList= [];
@@ -57,7 +65,7 @@ class LoginVm extends BaseVm {
   
 
   void validateUserName(String? val) {
-    if (val != null && val.isValidName) {
+    if (val != null && val.isValidUserName) {
       userName = ValidationModel(val, null);
     } else {
       userName = ValidationModel(null, 'Please Enter a Valid User Name');
@@ -91,8 +99,10 @@ class LoginVm extends BaseVm {
     try {
       loading = true;
       var data = {
-          "email": "hassan.zafar@ropstam.com",
-          "password": "12345678",
+          // "email": "hassan.zafar@ropstam.com",
+          // "password": "12345678",
+          "email": userName.value,
+          "password": password.value,
           "device_token": "zasdcvgtghnkiuhgfde345tewasdfghjkm"
 
       };
@@ -102,6 +112,8 @@ class LoginVm extends BaseVm {
         print("Success");
         var data = response.data;
         loading = false;
+        logInStatus = response.data['meta']['message'];
+        print('meta message value is $logInStatus');
 
         print('looged with data: $data');
       }

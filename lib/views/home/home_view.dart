@@ -1,165 +1,142 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_task/data/models/post_model.dart';
+import 'package:flutter_task/utilities/pref_utilities.dart';
+import 'package:flutter_task/views/auth/login_view.dart';
+import 'package:flutter_task/views/home/home_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_task/configurations/size_config.dart';
 import 'package:flutter_task/constants/app_colors.dart';
-import 'package:flutter_task/constants/app_strings.dart';
 
-import '../Forms/forms_vm.dart';
-
-
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   static const routeName = 'homeView';
 
   const HomeView({Key? key}) : super(key: key);
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    getPosts();
+    super.initState();
+  }
+
+  void getPosts() async {
+    await Provider.of<HomeVm>(context, listen: false).getPosts(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Consumer<FormsVm>(
-      builder: (context, formVm, _) {
+    return Consumer<HomeVm>(
+      builder: (context, homeVm, _) {
         return Scaffold(
-          backgroundColor: Colors.blue[50],
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: SizeConfig.screenHeight! * 0.12,
+            appBar: AppBar(
+              elevation: 0.0,
+              backgroundColor: AppColors.kWhiteColor,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: AppColors.kBlackColor,
                 ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset("assets/images/App-icon.svg"),
-                    SizedBox(
-                      width: SizeConfig.screenWidth! * 0.03,
-                    ),
-                    Text(
-                      AppStrings.appTitle,
-                      style: TextStyle(
-                          color: AppColors.kTextColorGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.screenHeight! * 0.025),
-                    ),
-                  ],
-                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-              SizedBox(
-                height: SizeConfig.screenHeight! * 0.04,
+              title: Text(
+                'All Posts',
+                style: TextStyle(
+                    color: AppColors.kBlackColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: SizeConfig.screenHeight! * 0.022),
               ),
-              Container(
-                padding: EdgeInsets.only(left: SizeConfig.screenWidth! * 0.07),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                height: SizeConfig.screenHeight! * 0.6,
-                width: SizeConfig.screenWidth! * 0.84,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.04,
-                    ),
-                    Center(
+              centerTitle: true,
+              actions: <Widget>[
+                Padding(
+                  padding:  EdgeInsets.only(top: SizeConfig.screenHeight!*0.02,right:  SizeConfig.screenWidth!*0.05),
+                  child: InkWell(
+                      onTap: () {
+                        PreferenceUtilities.clearAllPrefs(context);
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, LogInView.routeName, (route) => false);
+                      },
                       child: Text(
-                        AppStrings.details,
+                        'LogOut',
                         style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: SizeConfig.screenHeight! * 0.025),
-                      ),
-                    ),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.04,
-                    ),
-                    customLabel(AppStrings.firstName, AppColors.kBlackColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.02,
-                    ),
-                    customSubLabel(AppStrings.firstName, AppColors.kTextColorGrey),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.01,
-                    ),
-                    customLabel(AppStrings.lastName, AppColors.kBlackColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.02,
-                    ),
-
-                    customSubLabel(AppStrings.lastName, AppColors.kTextColorGrey),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.01,
-                    ),
-                    customLabel(AppStrings.monthlyIncom, AppColors.kBlackColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.02,
-                    ),
-                    customSubLabel(AppStrings.firstName, AppColors.kTextColorGrey),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.01,
-                    ),
-                    customLabel(AppStrings.monthlyRate, AppColors.kBlackColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.02,
-                    ),
-                    customSubLabel(formVm.monthlyRate.toStringAsFixed(2) +" €", AppColors.kPurpleColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.01,
-                    ),
-
-                    customLabel(AppStrings.score, AppColors.kBlackColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.02,
-                    ),
-                    customSubLabel(formVm.randomNumber.toString(), AppColors.kPurpleColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.01,
-                    ),
-                    customLabel(AppStrings.status, AppColors.kBlackColor),
-                    SizedBox(
-                      height: SizeConfig.screenHeight! * 0.02,
-                    ),
-                    customSubLabel(formVm.loanStatus,  AppColors.kPurpleColor),
-
-                    // CustomFormButton(
-                    //   text: "Next",
-                    //   onTap: () {
-                    //     if (formVm.monthlyRate == 0.0) {
-                    //       GeneralUtilities.showMessage(
-                    //           context: context, title: "info", text: "Please calculate monthly rate to continue");
-                    //     }
-                    //     else{
-                    //       Navigator.pushNamed(context, PersonalDataForm.routeName);
-                    //     }
-                    //     // print('amount selected is ${formVm.amount}');
-                    //     // print('time Period  is ${formVm.timePeriod}');
-                    //     // formVm.calculateMonthlyRate();
-                    //     // print('monthlyRate is ${formVm.monthlyRate}');
-                    //   },
-                    //   color: AppColors.kLightGreySlideToolTipColor,
-                    //   textColor: AppColors.kWhiteColor,
-                    //   height: SizeConfig.screenHeight! * 0.07,
-                    //   width: SizeConfig.screenWidth! * 0.7,
-                    // ),
-                  ],
+                            color: AppColors.kBlackColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: SizeConfig.screenHeight! * 0.022),
+                      )),
                 ),
-              ),
-            ],
-          ),
-        );
+              ],
+            ),
+            backgroundColor: AppColors.kGradientStartColor,
+            body: homeVm.loading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.kGreenColor,
+                    ),
+                  )
+                : Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // SizedBox(
+                      //   height: SizeConfig.screenHeight! * 0.02,
+                      // ),
+                      Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: homeVm.postList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return listItems(
+                                list: homeVm.postList,
+                                index: index,
+                                onTap: () {});
+                          },
+                        ),
+                      ),
+                    ],
+                  ));
       },
     );
   }
 
-  Widget customLabel(String label, Color color) {
-    return Text(
-      label,
-      style: TextStyle(color: color, fontSize: SizeConfig.screenHeight! * 0.023, fontWeight: FontWeight.w600),
-    );
-  }
+  Widget listItems({required List<Post> list, required int index, var onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 1.0,
+        color: AppColors.kWhiteColor,
+        margin: EdgeInsets.symmetric(
+            horizontal: SizeConfig.screenWidth! * 0.04,
+            vertical: SizeConfig.screenHeight! * 0.01),
+        child: ListTile(
+          contentPadding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.screenWidth! * 0.04,
+              vertical: SizeConfig.screenHeight! * 0.01),
+          //TODO replace with post image in future...
+          leading: CircleAvatar(
+            radius: SizeConfig.screenHeight! * 0.03,
+            backgroundColor: AppColors.kLightGreySlideToolTipColor,
+          ),
 
-  Widget customSubLabel(String label, Color color) {
-    return Text(
-      label,
-      style: TextStyle(color: color, fontSize: SizeConfig.screenHeight! * 0.02, fontWeight: FontWeight.normal),
+          title: Text(
+            list[index].id.toString(),
+            style: const TextStyle(
+                color: AppColors.kBlackColor, fontWeight: FontWeight.bold),
+          ),
+
+          subtitle: Text(list[index].title!,
+              style: TextStyle(
+                  color: AppColors.kBlackColor,
+                  fontSize: SizeConfig.screenHeight! * 0.018)),
+        ),
+      ),
     );
   }
 }

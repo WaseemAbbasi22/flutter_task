@@ -46,7 +46,7 @@ class FormValidationVm extends BaseVm{
     notifyListeners();
   }
   void validateFirstName(String? val) {
-    if (val != null && val.isValidName) {
+    if (val != null && val.isValidUserName) {
       firstName = ValidationModel(val, null);
     } else {
       firstName = ValidationModel(null, 'Please Enter a Valid Name');
@@ -54,7 +54,7 @@ class FormValidationVm extends BaseVm{
     notifyListeners();
   }
   void validateLastName(String? val) {
-    if (val != null && val.isValidName) {
+    if (val != null && val.isValidUserName) {
       lastName = ValidationModel(val, null);
     } else {
       lastName = ValidationModel(null, 'Please Enter a Valid Name');

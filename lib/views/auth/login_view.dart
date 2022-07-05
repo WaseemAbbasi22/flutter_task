@@ -15,6 +15,8 @@ import 'package:flutter_task/utilities/general_utilities.dart';
 import 'package:flutter_task/views/Forms/forms_vm.dart';
 import 'package:flutter_task/views/loan_status_view.dart';
 
+import '../../utilities/pref_utilities.dart';
+
 class LogInView extends StatefulWidget {
   static const routeName = 'LogInView';
 
@@ -35,7 +37,6 @@ class _LogInViewState extends State<LogInView> {
     // TODO: implement dispose
     userNameController.clear();
     passwordController.clear();
-    super.dispose();
   }
 
   @override
@@ -155,32 +156,52 @@ class _LogInViewState extends State<LogInView> {
                             text: "Login",
                             onTap: () {
                               loginVm.detectBtnClick = true;
-                              // loginVm
-                              //     .validateUserName(userNameController.text);
-                              // loginVm.validatePassword(passwordController.text);
+                              loginVm
+                                  .validateUserName(userNameController.text);
+                              loginVm.validatePassword(passwordController.text);
                               // loginVm.logIn(context);
-                              loginVm.getPosts(context);
+                              // loginVm.getPosts(context);
 
-                              // if (
-                              //     loginVm.userName.value != null &&
-                              //     loginVm.userName.value != null) {
-                              //   EasyLoading.show();
-                              //   loginVm
-                              //       .logIn(context)
-                              //       .whenComplete(() {
-                              //     clearControllerValue();
-                              //     EasyLoading.dismiss();
-                              //     loginVm.detectBtnClick = false;
-                              //     Navigator.pushReplacementNamed(
-                              //         context, HomeView.routeName);
-                              //   });
-                              // } else {
-                              //   GeneralUtilities.showMessage(
-                              //       context: context,
-                              //       title: "Error",
-                              //       text:
-                              //           "Please provide valid credentials.");
-                              // }
+                              if (
+                                  loginVm.userName.value != null &&
+                                  loginVm.password.value != null) {
+                                EasyLoading.show();
+                                loginVm
+                                    .logIn(context)
+                                    .whenComplete(() {
+                                      if(loginVm.logInStatus=="Successfull"){
+                                        EasyLoading.dismiss();
+                                        PreferenceUtilities.setUserAuthStatusToPrefs(true, context);
+                                        Navigator.pushReplacementNamed(context, HomeView.routeName);
+                                        clearControllerValue();
+                                      }
+                                      else if(loginVm.logInStatus=="Password Not Matched"){
+                                        EasyLoading.dismiss();
+                                        GeneralUtilities.showMessage(
+                                            context: context,
+                                            title: "Error",
+                                            text:
+                                            "Password Not matched");
+                                      }
+                                      else{
+                                        EasyLoading.dismiss();
+                                        GeneralUtilities.showMessage(
+                                            context: context,
+                                            title: "Error",
+                                            text:
+                                            "User not Registered");
+                                      }
+
+
+                                 print('login status from provider is ${loginVm.logInStatus}');
+                                });
+                              } else {
+                                GeneralUtilities.showMessage(
+                                    context: context,
+                                    title: "Error",
+                                    text:
+                                        "Please provide valid credentials.");
+                              }
                             },
                             color: AppColors.kGreenColor,
                             textColor: AppColors.kWhiteColor,
